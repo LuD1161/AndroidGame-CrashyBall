@@ -108,11 +108,9 @@ public class GameView extends SurfaceView implements Runnable{
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction() & MotionEvent.ACTION_MASK){
             case MotionEvent.ACTION_UP:
-                //stopping the booster when the screen is released
                 player.stopSlowing();
                 break;
             case MotionEvent.ACTION_DOWN:
-                //starting the booster when the screen is released
                 player.startSlowing();
                 break;
         }
@@ -181,7 +179,6 @@ public class GameView extends SurfaceView implements Runnable{
             paint.setTextSize(30);
             canvas.drawText("Score : "+score,100,50,paint);
 
-            //The following line is for single enemy
             paint.setColor(Color.CYAN);
             for(int i = 0; i< enemyCount; i++)
                 canvas.drawCircle(enemies[i].getX(), enemies[i].getY(), enemies[i].getRadius(), paint);
@@ -204,7 +201,7 @@ public class GameView extends SurfaceView implements Runnable{
 
     private void control() {
         try {
-            gameThread.sleep(15);   //creating the frame rate to around 33fps
+            gameThread.sleep(30);   //creating the frame rate to around 33fps
             canvas = null;
         } catch (InterruptedException e) {
             e.printStackTrace();
